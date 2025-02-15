@@ -21,7 +21,7 @@ USER: IP address 8.8.8.8 itu milik siapa yah?
 
 Berikut adalah struktur format dari nama DNS([ref](https://www.jogjahost.co.id/blog/dns-server-adalah/)):
 
-![DNS_STRUCTURE](/assets/subdomain.webp)
+![DNS_STRUCTURE](pic/subdomain.webp)
 
 ### Apakah nama-nama domain ini perlu kita cari tahu sewaktu melakukan project _penetration testing_?
 

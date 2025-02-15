@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# CEH COURSENET DASHBOARD - MATERIAL
+# Materials - Core
 
 Core materials and Labs:
 
