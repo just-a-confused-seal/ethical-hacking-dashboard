@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
 
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>DNS Reconnaisance | CEH Course-net Dashboard Online</title>
+<title>DNS Reconnaissance | CEH Course-net Dashboard Online</title>
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="DNS Reconnaisance" />
+<meta property="og:title" content="DNS Reconnaissance" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Information Gathering Materials" />
 <meta property="og:description" content="Information Gathering Materials" />
@@ -15,9 +15,9 @@
 <meta property="og:site_name" content="CEH Course-net Dashboard Online" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="DNS Reconnaisance" />
+<meta property="twitter:title" content="DNS Reconnaissance" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Information Gathering Materials","headline":"DNS Reconnaisance","url":"http://localhost:4000/recon/dns.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Information Gathering Materials","headline":"DNS Reconnaissance","url":"http://localhost:4000/recon/dns.html"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -42,7 +42,7 @@
     <a id="skip-to-content" href="#content">Skip to the content.</a>
 
     <header class="page-header" role="banner">
-      <h1 class="project-name">DNS Reconnaisance</h1>
+      <h1 class="project-name">DNS Reconnaissance</h1>
       <h2 class="project-tagline">Information Gathering Materials</h2>
       
       
@@ -82,13 +82,13 @@ Penetration Testing secara dasar sangat berfokus pada cangkupan jadi jika klien 
 
 <p>Jadi kapan pakai teknik ini?</p>
 <ol>
-  <li>Lakukanlah jika anda melakukan <em>bug bounty</em> karena tipikal nya secara umum program ini mencakup banyak aset yang harus di uji oleh <em>bug hunter</em>, jadi dengan melakukan DNS reconnaisance/enumeration <em>bug hunter</em> bisa memilah dan memetakan aset yang dapat dia uji sesuai dengan prosedur dari programnya.</li>
-  <li>Lakukanlah jika anda mau melakukan pemetaan aset eksternal perusahaan kalian. Dengan melakukan DNS reconnaisance/enumeration anda bisa melihat aset-aset eksternal website anda yang dapat dijadikan sasaran oleh penyerang siber. Dengan pendekatan ini anda bisa menaruh prioritas mana aset digital anda yang terlebih dahulu mesti diamankan.</li>
+  <li>Lakukanlah jika anda melakukan <em>bug bounty</em> karena secara umum program ini mencakup banyak aset yang harus di uji oleh <em>bug hunter</em>, jadi dengan melakukan DNS reconnaissance/enumeration <em>bug hunter</em> bisa memilah dan memetakan aset yang dapat dia uji sesuai dengan prosedur dari programnya.</li>
+  <li>Lakukanlah jika anda mau melakukan pemetaan aset eksternal perusahaan. Dengan melakukan DNS reconnaissance/enumeration anda bisa melihat aset-aset eksternal website anda yang dapat dijadikan sasaran oleh penyerang siber. Dengan pendekatan ini anda bisa menaruh prioritas mana aset digital anda yang terlebih dahulu mesti diamankan.</li>
 </ol>
 
-<h2 id="lab">Lab</h2>
+<h2 id="lab---1">Lab - 1</h2>
 
-<p>Untuk melakukan DNS reconnaisance/enumeration sendiri anda dapat memanfaatkan program dari <em>3rd party</em> ini:</p>
+<p>Untuk melakukan DNS reconnaissance/enumeration sendiri anda dapat memanfaatkan program dari <em>3rd party</em> ini:</p>
 
 <ol>
   <li>
@@ -99,6 +99,78 @@ Penetration Testing secara dasar sangat berfokus pada cangkupan jadi jika klien 
   </li>
 </ol>
 
+<p>Kita akan coba melakukan DNS reconnaissance/enumeration ke aset dari <a href="https://hackerone.com/acronis?type=team">acronis</a> seperti yang tertulis di deskripsi program bug bounty:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Our main domains hosting user-facing Acronis services. All subdomains under acronis.com, devicelock.com and 5nine.com are in scope.
+</code></pre></div></div>
+
+<p>Berikut adalah hasil yang dikeluarkan oleh crt.sh:</p>
+
+<p><img src="pic/crt_sh.png" alt="CRT_SH" /></p>
+
+<p>Berikut adalah hasil yang dikeluarkan oleh c99:</p>
+
+<p><img src="pic/c99.png" alt="C99" /></p>
+
+<p>Kedua <em>platform</em> memberikan hasil yang berbeda, tetapi itu tidak terlalu bermasalah karena kita dapat menggabungkan kedua hasil tersebut menjadi satu. <em>Penetration Tester</em> perlu untuk melakukan perbandingan dari sumber-sumber yang mereka dapatkan sebagai pembanding, agar hasil bisa lebih akurat.</p>
+
+<p>Perlu diperhatikan untuk hasil yang diberikan oleh kedua website ini bisa saja tidak paling mutakhir (<em>up to date</em>) jadi kita harus memastikan subdomain yang ditemukan masih menyala atau tidak?</p>
+
+<p>Kita dapat memanfaatkan program dari <img src="https://github.com/projectdiscovery/httpx" alt="httpx" />. <em>httpx</em> merupakan program serbaguna untuk mengirimkan dan memanipulasi paket protokol HTTP(<em>HTTP request</em>) yang dapat membantu kita melakukan otomatisasi proses yang dijelaskan sebelumnya.</p>
+
+<p>Dengan mengunduh program nya di <img src="https://github.com/projectdiscovery/httpx/releases" alt="halaman" /> ini. Dalam konteks ini, dikarenakan OS yang digunakan dalam lab ini adalah ubuntu linux x64 bit. Maka versi yang dipilih adalah  httpx_1.6.10_linux_amd64.zip</p>
+
+<p><img src="pic/httpx.png" alt="httpx_download" /></p>
+
+<p>Berikut adalah subdomain yang telah dipilah dari crt.sh dan c99:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5nine.com
+5nineservice.demo.5nine.com
+alt.5nine.com
+api2.5nine.com
+api.5nine.com
+blog.5nine.com
+evolve.5nine.com
+go.5nine.com
+ideas.5nine.com
+info.5nine.com
+kb.5nine.com
+salesloft.5nine.com
+secure0078.hubspot.com
+try.5nine.com
+www.5nine.com
+</code></pre></div></div>
+
+<p>Dengan menyimpan daftar subdomain tersebut dalam sebuah file kita dapat menjalankan program <em>httpx</em> dengan parameter berikut:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./httpx -status-code -title -tech-detect -list 5nine.txt 
+</code></pre></div></div>
+
+<p><img src="pic/httpx_result.png" alt="httpx_download" /></p>
+
+<p>Dari hasil yang diberikan oleh program kita dapat menarik kesimpulan dari 15 subdomain yang ditemukan oleh website tersebut yang masih aktif hanya 4 subdomain.</p>
+
+<h3 id="-latihan-1-">-Latihan 1-</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sebagai latihan untuk lab ini, anda dapat membuat program _automation_ yang melakukan aksi berikut:
+
+1. Program mengambil input pengguna berupa nama domain;
+2. Program mengirim nama domain tersebut ke crt.sh dan menyimpan hasil yang diberikan oleh website;
+3. Program memvalidasi apakah hasil yang diberikan oleh website crt.sh masih valid atau tidak dengan mengecek apakah domain masih bisa dikunjungi atau tidak.
+4. Setelah validasi selesai, program mengeluarkan hasil nya ke pengguna lagi.
+
+program bisa memakai bahasa pemrograman apapun termasuk: python, powershell, bash, php dan lain lain.
+</code></pre></div></div>
+
+<h2 id="lab---2">Lab - 2</h2>
+<p>Untuk lab selanjutnya kita akan mencoba untuk memakai program <img src="https://github.com/owasp-amass/amass/tree/master" alt="amass" />. <em>Amass</em> sendiri memiliki beberapa fitur yang dapat membantu melakukan <em>information gathering</em> salah satunya adalah enumerasi DNS.</p>
+
+<p>Untuk lab ini kita akan memakai pendekatan <em>brute force</em> untuk melakukan enumerasi. Oleh karena itu kita butuh sebuah daftar atau <em>wordlist</em> yang dapat dipakai sebagai referensi program, untuk kesempatan ini kita akan memakai <img src="https://github.com/danielmiessler/SecLists/blob/master/Discovery/DNS/bug-bounty-program-subdomains-trickest-inventory.txt" alt="bugcrowd" /></p>
+
+<p>Sesudah mengunduh file berikut anda dapat menjalankan program <em>Amass</em> seperti berikut:</p>
+
+<p><img src="pic/amass.png" alt="amass_result" /></p>
+
+<p>Subdomain yang valid adalah yang di label sebagai <em>a_record</em></p>
 
 
       <footer class="site-footer">
