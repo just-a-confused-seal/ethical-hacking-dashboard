@@ -14,4 +14,4 @@ description: Information Gathering - Materi
 | [People Fingerprinting](./people.html)                           | people                       |
 
 
-[Back](./)
+[Back](../)

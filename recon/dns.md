@@ -119,3 +119,5 @@ Sesudah mengunduh file berikut anda dapat menjalankan program _Amass_ seperti be
 ![amass_result](pic/amass.png)
 
 Subdomain yang valid adalah yang di label sebagai _a_record_
+
+[Back](./)

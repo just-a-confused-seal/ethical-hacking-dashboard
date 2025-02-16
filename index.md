@@ -7,6 +7,7 @@ layout: default
 Core materials and Labs:
 
 1.  [DAY 1 - Information Gathering(Reconnaisance)](./recon.html).
+2.  [DAY 2 - Network Scanning](./scan.html)
 
 # Materials - Suplementary
 
