@@ -9,9 +9,7 @@ description: Information Gathering - Materi
 | material                                                         | category                     |
 |:-----------------------------------------------------------------|:-----------------------------|
 | [DNS Reconnaisance](./recon/dns.html).                           | bug bounty, asset discovery  |
-| [Network Passive Footprinting - 3rd party](./passive.html)       | bug bounty, asset discovery  |
-| [Search Engine - Google Hacking](./google_hacking.html)          | bug bounty, asset discovery  |
-| [People Fingerprinting](./people.html)                           | people                       |
+| [Search Engine - Google Hacking](./recon/google_hacking.html)    | bug bounty, asset discovery  |
 
 
 [Back](../)

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Google Hacking | CEH Course-net Dashboard Online</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Google Hacking" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Information Gathering Materials" />
+<meta property="og:description" content="Information Gathering Materials" />
+<link rel="canonical" href="http://localhost:4000/recon/google_hacking.html" />
+<meta property="og:url" content="http://localhost:4000/recon/google_hacking.html" />
+<meta property="og:site_name" content="CEH Course-net Dashboard Online" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Google Hacking" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Information Gathering Materials","headline":"Google Hacking","url":"http://localhost:4000/recon/google_hacking.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <a id="skip-to-content" href="#content">Skip to the content.</a>
+
+    <header class="page-header" role="banner">
+      <h1 class="project-name">Google Hacking</h1>
+      <h2 class="project-tagline">Information Gathering Materials</h2>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h2 id="pengenalan">Pengenalan</h2>
+
+<p>Sebelum memulai lab, baik untuk dibahas terlebih dahulu tentang apa itu GOOGLE HACKING?</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Google hacking atau lebih sering sebagai 'Google dorking' dalam konteks 
+cyber security adalah sebuah teknik pencarian di Google yang dapat membantu 
+kita untuk mendapatkan informasi sensitif dari sebuah organisasi ataupun perusahaan.
+</code></pre></div></div>
+
+<p>Kenapa kita butuh teknik ini?</p>
+
+<p>Karena jika kita memakai Google sendiri kita dapat memasukan sebuah “kata kunci” yang dapat dimasukan kedalam kolom pencarian seperti berikut:</p>
+
+<p><img src="pic/google_search.png" alt="google_search" /></p>
+
+<p>Setelah memasukan “kata kunci” Google akan memberikan daftar website atau informasi yang berkaitan dengan kata-kata tersebut. Cara ini sendiri merupakan, cara yang umum dipakai oleh kebanyakan pengguna.</p>
+
+<p>Tetapi apakah dengan cara ini bisa memberikan kita informasi sensitif yang dapat berguna dalam melakukan penetration testing atau red team?</p>
+
+<p>Tentu saja, TIDAK !!!</p>
+
+<p>Karena biasanya informasi yang bersifat ‘sensitif’ atau ‘khusus’ tidak akan dikeluarkan oleh Google jika kita memakai tipe pencarian seperti yang ada digambar diatas.</p>
+
+<h2 id="operator-google-dorking">Operator Google Dorking</h2>
+
+<p>Google dorking sendiri memakai ‘syntax’ atau ‘operator’ yang dapat mengkhususkan pencarian dari pengguna.</p>
+
+<p>Contohnya:</p>
+
+<p>Pengguna ini ingin mencari file pdf yang pernah dibagikan oleh kemenkeu di tahun 2025. Pengguna bisa memasukan operator berikut:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>site:*.kemenkeu.go.id filetype:pdf intitle:"2025"
+</code></pre></div></div>
+
+<p><img src="pic/dork.png" alt="google_search" /></p>
+
+<p>catatan: hasil pencarian yang tertera di gambar diatas merupakan informasi publik</p>
+
+<p>Mari kita bedah sedikit tentang operator yang telah dimasukin:</p>
+
+<ul>
+  <li>site:*.kemenkeu.go.id</li>
+</ul>
+
+<p>Operator untuk memfilter berdasakan kriteria dari nama domain yang dipakai oleh website. Dengan menambahkan * (wildcard) itu artinya pengguna ingin mendapatkan hasil dari subdomain yang masih satu domain dengan kemekeu.go.id.</p>
+
+<ul>
+  <li>filetype:pdf</li>
+</ul>
+
+<p>Operator untuk memfilter berdasarkan kriteria tipe file yang ditampilkan oleh website. Dalam kasus ini pengguna ingin mencari file berbentuk .pdf karena laporan biasanya di format dalam bentuk tersebut.</p>
+
+<ul>
+  <li>intitle:”2025”</li>
+</ul>
+
+<p>Operator untuk memfilter berdaskan kriteria judul yang ditampilan di halaman website. Dalam kasus ini pengguna ingin mencari halaman website / laporan yang ada tulisan “2025”.</p>
+
+<h2 id="google-hacking-databaseghdb">Google Hacking Database(GHDB)</h2>
+
+<p>Jika anda ingin mencari lebih banyak referensi tentang bagaimana Google dork dapat dimanfaatkan untuk mencari data bocor atau celas sebuah keamanan. Anda bisa mengunjungi <a href="https://www.exploit-db.com/google-hacking-database">GHDB</a></p>
+
+<p>Kita akan mencoba mengambil Google dork berikut:</p>
+
+<p><img src="pic/case.png" alt="google_dork_study_case" /></p>
+
+<p>Lalu kita akan memodifikasi dork nya dengan menambahkan operator site: lagi untuk memfilter hasil agar hanya mengeluakan website yang domainnya berasal dari Indonesia menjadi “BEGIN OPENSSH PRIVATE KEY” site:.id</p>
+
+<p><img src="pic/case2.png" alt="google_dork_study_case_2" /></p>
+
+<p>Mari kita telaah hasil yang diberikan oleh dork yang telah dimodifikasi.</p>
+
+<ul>
+  <li>“BEGIN OPENSSH PRIVATE KEY”</li>
+</ul>
+
+<p>Ini merupakan salah satu bentuk lain dari dork yang telah dijelaskan sebelumnya. Dengan memakai dork ini Google harus memberikan website dengan tulisan yang ada dalam petik dua dan harus sama persis.</p>
+
+<ul>
+  <li>site:.id</li>
+</ul>
+
+<p>Artinya Google harus memberikan website yang dimana domain website nya ada .id yang merupakan berasal dari indonesia.</p>
+
+<p>Kenapa memakai kata kunci “BEGIN OPENSSH PRIVATE KEY” karena ini merupakan salah satu komponen dari ‘private key’ SSH. Apa itu ‘private key’? simpel nya komponen ini adalah bisa kita anggap sebagai password untuk bisa masuk ke server dan di kasus ini kita memanfaatkan keteledoran dari sistem admin yang suka menaruh sembarang hal-hal sensitif di website nya dengan beranggapan informasi tersebut tidak akan bisa ditemukan kecuali dia sendiri.</p>
+
+<p>Tapi apakah hasil yang diberikan Google ini 100% valid ?</p>
+
+<p><b>Tentu saja TIDAK!<b></b></b></p>
+
+<p>Kita sebagai pentester harus melakukan validasi apakah temuan yang ada di Google dork ini valid atau tidak. Karena bisa saja ‘private key’ yang kita temukan sudah kedaluwarsa atau diganti dengan yang baru yang belum terindex oleh Google crawler.</p>
+
+<p>Semoga dengan penjelasan ini anda sadar bahwa di dunia cyber security ini kita bukan hanya sekedar copy-paste dan mengklaim itu temuan. Perlu adanya validasi dan analisa lebih lanjut efek dari temuan yang ada di kasus ini.</p>
+
+<h2 id="referensi-tambahan">Referensi Tambahan</h2>
+
+<p>Jika anda tertarik untuk mempelajari Google dork anda juga dapat mengunjungi <a href="https://github.com/Tobee1406/Awesome-Google-Dorks">Github</a> berikut untuk melihat syntax apalagi yang dapat dimanfaatkan lagi.</p>
+
+<p><a href="./">Back</a></p>
+
+
+      <footer class="site-footer">
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </main>
+  </body>
+</html>

@@ -4,7 +4,7 @@ title: DNS Reconnaissance
 description: Information Gathering Materials
 ---
 
-## Introduction
+## Pengenalan
 
 Sebelum memulai lab, baik untuk dibahas terlebih dahulu tentang apa itu DNS?
 
